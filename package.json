@@ -1,0 +1,23 @@
+{
+  "name": "homework",
+  "version": "1.0.0",
+  "main": "target/index.js",
+  "author": "SaraRiach <saracar2@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "@types/koa": "^2.0.45",
+    "@types/koa-bodyparser": "^4.2.0",
+    "@types/koa-multer": "^1.0.0",
+    "@types/koa-router": "^7.0.27",
+    "@types/node": "^9.6.6",
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-multer": "^1.0.2",
+    "koa-router": "^7.4.0",
+    "routing-controllers": "^0.7.7",
+    "typescript": "^2.8.3"
+  }
+}
