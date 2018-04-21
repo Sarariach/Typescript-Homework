@@ -1,4 +1,5 @@
 import {Controller, Get} from 'routing-controllers'
+import Game from './games/entity'
 
 @Controller()
 export default class MainController {
