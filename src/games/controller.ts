@@ -1,15 +1,16 @@
-import {Controller, Get, Param} from 'routing-controllers'
+import {Controller, Get, Post, HttpCode} from 'routing-controllers'
 import Game from './entity'
 
 @Controller()
 export default class GameController {
 
-    @Get('/games/:id')
-    getGame( 
-      @Param('id') id:number
-    ){
-      return Game.findOne(id)
+    @Get('/games/')
+    async allGames() {
+      const games = await Game.find()
+      return {games}
     }
     
+    @Post('/games')
+    @HttpCode(201)
     }
 
