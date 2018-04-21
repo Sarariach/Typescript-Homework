@@ -8,29 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const typeorm_1 = require("typeorm");
-const BaseEntity_1 = require("typeorm/repository/BaseEntity");
-let Game = class Game extends BaseEntity_1.BaseEntity {
+const routing_controllers_1 = require("routing-controllers");
+const entity_1 = require("./entity");
+let GameController = class GameController {
+    getGame(id) {
+        return entity_1.default.findOne(id);
+    }
 };
 __decorate([
-    typeorm_1.PrimaryGeneratedColumn(),
-    __metadata("design:type", Number)
-], Game.prototype, "id", void 0);
-__decorate([
-    typeorm_1.Column('text', { nullable: false }),
-    __metadata("design:type", String)
-], Game.prototype, "name", void 0);
-__decorate([
-    typeorm_1.Column('text', { nullable: false }),
-    __metadata("design:type", String)
-], Game.prototype, "color", void 0);
-__decorate([
-    typeorm_1.Column('json', { nullable: false }),
-    __metadata("design:type", Array)
-], Game.prototype, "board", void 0);
-Game = __decorate([
-    typeorm_1.Entity()
-], Game);
-exports.default = Game;
-//# sourceMappingURL=entity.js.map
+    routing_controllers_1.Get('/games/:id'),
+    __param(0, routing_controllers_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], GameController.prototype, "getGame", null);
+GameController = __decorate([
+    routing_controllers_1.Controller()
+], GameController);
+exports.default = GameController;
+//# sourceMappingURL=controller.js.map

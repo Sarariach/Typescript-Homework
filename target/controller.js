@@ -8,23 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const routing_controllers_1 = require("routing-controllers");
-let MainController = class MainController {
-    main() {
-        return {
-            hello: 'World'
-        };
+const entity_1 = require("./games/entity");
+let GameController = class GameController {
+    getGame(id) {
+        return entity_1.default.findOneById(id);
     }
 };
 __decorate([
-    routing_controllers_1.Get("/hello"),
+    routing_controllers_1.Get('/games/:id'),
+    __param(0, Param('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], MainController.prototype, "main", null);
-MainController = __decorate([
+], GameController.prototype, "getGame", null);
+GameController = __decorate([
     routing_controllers_1.Controller()
-], MainController);
-exports.default = MainController;
+], GameController);
+exports.default = GameController;
 //# sourceMappingURL=controller.js.map

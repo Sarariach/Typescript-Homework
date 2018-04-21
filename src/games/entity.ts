@@ -14,5 +14,5 @@ export default class Game extends BaseEntity {
   color: string
 
   @Column('json', {nullable:false})
-  board: object
+  board: string []
 }
