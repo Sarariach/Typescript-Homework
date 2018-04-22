@@ -22,6 +22,7 @@ let GameController = class GameController {
     }
     async createGame(game) {
         game.color = entity_2.setColor();
+        game.board = entity_2.newBoard();
         return game.save();
     }
     async updateGame(id, update) {

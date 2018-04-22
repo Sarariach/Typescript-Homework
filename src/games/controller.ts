@@ -1,6 +1,6 @@
 import {JsonController, Get, Post, BodyParam, Body, HttpCode, NotFoundError, Param, Put,} from 'routing-controllers'
 import Game from './entity'
-import {setColor} from './entity'
+import {setColor, newBoard} from './entity'
 
 
 @JsonController()
@@ -18,6 +18,7 @@ export default class GameController {
       @Body () game: Game,
     ) {
       game.color = setColor()
+      game.board = newBoard()
     return game.save()
     }
 
