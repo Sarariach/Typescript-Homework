@@ -19,6 +19,9 @@ let GameController = class GameController {
         const games = await entity_1.default.find();
         return { games };
     }
+    getGame(id) {
+        return entity_1.default.findOne(id);
+    }
     async createGame(game) {
         const setColor = () => {
             const colors = ["Red", "Blue", "Yellow", "Green", "Magenta"];
@@ -54,6 +57,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], GameController.prototype, "allGames", null);
+__decorate([
+    routing_controllers_1.Get('/games/:id'),
+    __param(0, routing_controllers_1.Param('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], GameController.prototype, "getGame", null);
 __decorate([
     routing_controllers_1.Post('/games'),
     routing_controllers_1.HttpCode(201),

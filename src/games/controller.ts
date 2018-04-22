@@ -10,6 +10,13 @@ export default class GameController {
       const games = await Game.find()
       return {games}
     }
+
+    @Get('/games/:id')
+    getGame(
+    @Param('id') id: number
+    ) {
+      return Game.findOne(id)
+    }
     
     @Post('/games')
     @HttpCode(201)
