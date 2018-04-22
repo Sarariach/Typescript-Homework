@@ -1,10 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
-import { IsIn } from 'class-validator'
+// import { IsIn, Equals } from 'class-validator'
+// import {colors} from './controller'
 
-export const colors = ["Red", "Blue", "Yellow", "Green", "Magenta"]
 
 @Entity()
+
 export default class Game extends BaseEntity {
 
   @PrimaryGeneratedColumn()
@@ -13,9 +14,8 @@ export default class Game extends BaseEntity {
   @Column('text', {nullable:false})
   name: string
 
-  @IsIn(colors)	
-  @Column('text', {default:false})
-  color: string
+  @Column('text', {nullable:true})
+  color: string 
 
   @Column('json', {nullable:false})
   board: string []
@@ -24,8 +24,16 @@ export default class Game extends BaseEntity {
 }
 
 
+export const setColor = () => {
+  const colors= ["Red", "Blue", "Yellow", "Green", "Magenta"]
+  return colors[Math.floor(Math.random()* colors.length)]
+}
 
-
+  // async setPassword(rawPassword: string) {
+  //   const hash = await bcrypt.hash(rawPassword, 10)
+  //   this.password = hash
+  // }
+  
 
 
 
