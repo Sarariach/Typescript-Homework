@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
-import { NotEquals } from 'class-validator'
+import { NotEquals, IsString/*Contains*/ } from 'class-validator'
 
 const colors= ["Red", "Blue", "Yellow", "Green", "Magenta"]
 
@@ -9,11 +9,13 @@ const colors= ["Red", "Blue", "Yellow", "Green", "Magenta"]
 export default class Game extends BaseEntity {
 
   @PrimaryGeneratedColumn()
-  id: number
+  id?: number
 
+  @IsString()
   @Column('text', {nullable:false})
   name: string
 
+  // @Contains(colors)
   @NotEquals(colors)
   @Column('text', {nullable:true})
   color: string 

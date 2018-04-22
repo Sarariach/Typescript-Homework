@@ -1,4 +1,4 @@
-import {JsonController, Get, Post, BodyParam, Body, HttpCode, NotFoundError, Param, Put,} from 'routing-controllers'
+import {JsonController, Get, Post, BodyParam, Body, BadRequestError, HttpCode, NotFoundError, Param, Put, MethodNotAllowedError,} from 'routing-controllers'
 import Game from './entity'
 
 
@@ -35,13 +35,17 @@ export default class GameController {
     return game.save()
     }
 
-    @Put('/games/:name')
+    @Put('/games/:id')
     async updateGame(
-      @Param('name') name:string,
-      @Body() update: Partial <Game>
+      @Param('id') id:number,
+      @Body() update: Partial <Game>,
+      @BodyParam('color') color:string,
     ) {
-      const game = await Game.findOne(name)
+      const game = await Game.findOne(id)
       if (!game) throw new NotFoundError('Cannot find game')
+
+      const colors= ["Red", "Blue", "Yellow", "Green", "Magenta"]
+      if (!color) throw new NotFoundError('Cannot use this color')
 
       return Game.merge(game, update).save()
     }
@@ -80,3 +84,5 @@ export default class GameController {
   //     const entity = Game.create(colors)
   //     await entity.setGame(color)
   //     return game.save()
+
+  // if (!colors || !colors) throw new BadRequestError('A user with this color is not allowed')

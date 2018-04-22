@@ -38,10 +38,13 @@ let GameController = class GameController {
         game.board = newBoard();
         return game.save();
     }
-    async updateGame(name, update) {
-        const game = await entity_1.default.findOne(name);
+    async updateGame(id, update, color) {
+        const game = await entity_1.default.findOne(id);
         if (!game)
             throw new routing_controllers_1.NotFoundError('Cannot find game');
+        const colors = ["Red", "Blue", "Yellow", "Green", "Magenta"];
+        if (!color)
+            throw new routing_controllers_1.NotFoundError('Cannot use this color');
         return entity_1.default.merge(game, update).save();
     }
 };
@@ -60,11 +63,12 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], GameController.prototype, "createGame", null);
 __decorate([
-    routing_controllers_1.Put('/games/:name'),
-    __param(0, routing_controllers_1.Param('name')),
+    routing_controllers_1.Put('/games/:id'),
+    __param(0, routing_controllers_1.Param('id')),
     __param(1, routing_controllers_1.Body()),
+    __param(2, routing_controllers_1.BodyParam('color')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [Number, Object, String]),
     __metadata("design:returntype", Promise)
 ], GameController.prototype, "updateGame", null);
 GameController = __decorate([
