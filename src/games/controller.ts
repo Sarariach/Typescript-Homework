@@ -1,6 +1,6 @@
 import {JsonController, Get, Post, BodyParam, Body, HttpCode, NotFoundError, Param, Put,} from 'routing-controllers'
 import Game from './entity'
-import {setColor, newBoard} from './entity'
+// import {setColor, newBoard} from './entity'
 
 
 @JsonController()
@@ -17,6 +17,20 @@ export default class GameController {
     async createGame(
       @Body () game: Game,
     ) {
+      const setColor = () => {
+        const colors= ["Red", "Blue", "Yellow", "Green", "Magenta"]
+        return colors[Math.floor(Math.random()* colors.length)]
+      }
+        const newBoard = () => {
+        const defaultBoard = [
+         ['o', 'o', 'o'],
+         ['o', 'o', 'o'],
+         ['o', 'o', 'o']
+       ]
+       const startBoard =JSON.stringify(defaultBoard)
+       let newnewBoard= JSON.parse(startBoard)
+       return newnewBoard
+      }
       game.color = setColor()
       game.board = newBoard()
     return game.save()

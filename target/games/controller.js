@@ -14,15 +14,28 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const routing_controllers_1 = require("routing-controllers");
 const entity_1 = require("./entity");
-const entity_2 = require("./entity");
 let GameController = class GameController {
     async allGames() {
         const games = await entity_1.default.find();
         return { games };
     }
     async createGame(game) {
-        game.color = entity_2.setColor();
-        game.board = entity_2.newBoard();
+        const setColor = () => {
+            const colors = ["Red", "Blue", "Yellow", "Green", "Magenta"];
+            return colors[Math.floor(Math.random() * colors.length)];
+        };
+        const newBoard = () => {
+            const defaultBoard = [
+                ['o', 'o', 'o'],
+                ['o', 'o', 'o'],
+                ['o', 'o', 'o']
+            ];
+            const startBoard = JSON.stringify(defaultBoard);
+            let newnewBoard = JSON.parse(startBoard);
+            return newnewBoard;
+        };
+        game.color = setColor();
+        game.board = newBoard();
         return game.save();
     }
     async updateGame(id, update) {

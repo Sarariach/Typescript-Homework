@@ -26,23 +26,11 @@ __decorate([
     __metadata("design:type", String)
 ], Game.prototype, "color", void 0);
 __decorate([
-    typeorm_1.Column('json', { nullable: false }),
+    typeorm_1.Column('json', { nullable: true }),
     __metadata("design:type", Object)
 ], Game.prototype, "board", void 0);
 Game = __decorate([
     typeorm_1.Entity()
 ], Game);
 exports.default = Game;
-exports.setColor = () => {
-    const colors = ["Red", "Blue", "Yellow", "Green", "Magenta"];
-    return colors[Math.floor(Math.random() * colors.length)];
-};
-exports.newBoard = () => {
-    const defaultBoard = [
-        ['o', 'o', 'o'],
-        ['o', 'o', 'o'],
-        ['o', 'o', 'o']
-    ];
-    return defaultBoard;
-};
 //# sourceMappingURL=entity.js.map

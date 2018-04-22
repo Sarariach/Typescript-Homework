@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
-// import { IsIn, Equals } from 'class-validator'
+import { IsIn } from 'class-validator'
 // import {colors} from './controller'
 
 
@@ -14,29 +14,33 @@ export default class Game extends BaseEntity {
   @Column('text', {nullable:false})
   name: string
 
+  
   @Column('text', {nullable:true})
   color: string 
 
-  @Column('json', {nullable:false})
+  @Column('json', {nullable:true})
   board: JSON
 
 
 }
 
 
-export const setColor = () => {
-  const colors= ["Red", "Blue", "Yellow", "Green", "Magenta"]
-  return colors[Math.floor(Math.random()* colors.length)]
-}
+// export const setColor = () => {
+//   const colors= ["Red", "Blue", "Yellow", "Green", "Magenta"]
+//   .catch()
+//   return colors[Math.floor(Math.random()* colors.length)]
+// }
 
-export const newBoard = () => {
-   const defaultBoard = [
-    ['o', 'o', 'o'],
-    ['o', 'o', 'o'],
-    ['o', 'o', 'o']
-  ]
-  return defaultBoard
-}
+// export const newBoard = () => {
+//    const defaultBoard = [
+//     ['o', 'o', 'o'],
+//     ['o', 'o', 'o'],
+//     ['o', 'o', 'o']
+//   ]
+//   const startBoard =JSON.stringify(defaultBoard)
+//   let newnewBoard= JSON.parse(startBoard)
+//   return newnewBoard
+// }
   // async setPassword(rawPassword: string) {
   //   const hash = await bcrypt.hash(rawPassword, 10)
   //   this.password = hash
