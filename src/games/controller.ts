@@ -39,18 +39,25 @@ export default class GameController {
     async updateGame(
       @Param('id') id:number,
       @Body() update: Partial <Game>,
-      @BodyParam('color') color:string,
     ) {
       const game = await Game.findOne(id)
       if (!game) throw new NotFoundError('Cannot find game')
 
-      const colors= ["Red", "Blue", "Yellow", "Green", "Magenta"]
-      if (!color) throw new NotFoundError('Cannot use this color')
+      const colors = ["Red", "Blue", "Yellow", "Green", "Magenta"]
+      if (update.color === "Red") throw new NotFoundError('Cannot use color')
+
 
       return Game.merge(game, update).save()
     }
-  }
-
+  
+    
+    
+          }
+       
+      
+    
+    
+  
 
 
 
