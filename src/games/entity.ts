@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
-import { IsIn, Equals } from 'class-validator'
+// import { IsIn, Equals } from 'class-validator'
 // import {colors} from './controller'
 
 
@@ -17,8 +17,8 @@ export default class Game extends BaseEntity {
   @Column('text', {nullable:true})
   color: string 
 
-  @Column('json', {nullable:true})
-  board: object
+  @Column('json', {nullable:false})
+  board: JSON
 
 
 }
