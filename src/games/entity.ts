@@ -1,20 +1,20 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 import { BaseEntity } from 'typeorm/repository/BaseEntity'
-import { IsIn } from 'class-validator'
-// import {colors} from './controller'
+import { NotEquals } from 'class-validator'
 
+const colors= ["Red", "Blue", "Yellow", "Green", "Magenta"]
 
 @Entity()
 
 export default class Game extends BaseEntity {
 
   @PrimaryGeneratedColumn()
-  id?: number
+  id: number
 
   @Column('text', {nullable:false})
   name: string
 
-  
+  @NotEquals(colors)
   @Column('text', {nullable:true})
   color: string 
 
